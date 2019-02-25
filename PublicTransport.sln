@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicTransport", "PublicTransport\PublicTransport.csproj", "{BDC03DE4-0B6B-4186-B20F-EFE907C5D2BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{A650CF99-245E-47E4-90F8-DD7CC5300224}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDC03DE4-0B6B-4186-B20F-EFE907C5D2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC03DE4-0B6B-4186-B20F-EFE907C5D2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC03DE4-0B6B-4186-B20F-EFE907C5D2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC03DE4-0B6B-4186-B20F-EFE907C5D2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A650CF99-245E-47E4-90F8-DD7CC5300224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A650CF99-245E-47E4-90F8-DD7CC5300224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A650CF99-245E-47E4-90F8-DD7CC5300224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A650CF99-245E-47E4-90F8-DD7CC5300224}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1A1228E-7BF6-470C-8B7C-6684FFA920DC}
+	EndGlobalSection
+EndGlobal
