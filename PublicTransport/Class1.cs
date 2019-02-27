@@ -1,25 +1,30 @@
-﻿using System;
+﻿using Patterns;
+using System;
 using System.Collections.Generic;
 
 
 namespace PublicTransport
 {
-    public delegate void RecievedInformationHandler<TValue>(TValue T);
+   // public delegate void RecievedInformationHandler<TValue>(TValue T);
 
-    public abstract class Vehicle
+    public abstract class Vehicle: IObserver
     {
-        public event RecievedInformationHandler<Vehicle> RecievedInformationEvent;
+      //  public event RecievedInformationHandler<Vehicle> RecievedInformationEvent;
         public int ID;
 
-        public void SendInfoToDispatcher()
+       /* public void SendInfoToDispatcher(ISubject subject)
         {
-            if(RecievedInformationEvent!=null)
-                RecievedInformationEvent.Invoke(this);
-        }
+            subject.NotifyObservers();
+        }*/
 
         public void RecieveMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public void Update(string message)
+        {
+            RecieveMessage(message);
         }
     }
 
@@ -44,17 +49,29 @@ namespace PublicTransport
         }
     }
 
-    public class DispatchingOffice<TValue> where TValue: Vehicle
+    public class DispatchingOffice<TValue>:ISubject where TValue: Vehicle, IObserver
     {
         public List<TValue> Vehicles;
+        public List<IObserver> Observers;
         public string VehicleType;
-        public HashSet<int> BusyNumbers;
+       // public HashSet<int> BusyNumbers;
         public int NextNumber;
         public DispatchingOffice()
         {
             Vehicles = new List<TValue>();
             NextNumber = 1;
-            BusyNumbers = new HashSet<int>();
+            Observers = new List<IObserver>();
+           // BusyNumbers = new HashSet<int>();
+        }
+
+        public void NotifyObservers()
+        {
+            foreach (IObserver T in Vehicles)
+            {
+                //Console.WriteLine(T.ToString());
+                SendMessageToVehicles((TValue)T);
+                T.Update(T.ToString());
+            }
         }
 
         public void SendMessageToVehicles(TValue T)
@@ -62,20 +79,31 @@ namespace PublicTransport
             T.RecieveMessage("Safe journey, " + T.ID+"!");
         }
 
-        public void OnRecievedInfo(TValue T)
+        /*public void OnRecievedInfo(TValue T)
         {
             Console.WriteLine(T.ToString());
             SendMessageToVehicles(T);
-        }
+        }*/
 
-        public void AddVehicle(Vehicle vehicle)
+        public void AddVehicle(TValue vehicle)
         {
             vehicle.ID = NextNumber;
             NextNumber++;
             Vehicles.Add(vehicle);
-            BusyNumbers.Add(vehicle.ID);
-            vehicle.RecievedInformationEvent += OnRecievedInfo;
+           // BusyNumbers.Add(vehicle.ID);
+            RegisterObserver(vehicle);
+           // vehicle.RecievedInformationEvent += OnRecievedInfo;
             
+        }
+
+        public void RegisterObserver(IObserver observer)
+        {
+            Observers.Add(observer);
+        }
+
+        public void RemoveObserver(IObserver observer)
+        {
+            Observers.Remove(observer);
         }
     }
 }

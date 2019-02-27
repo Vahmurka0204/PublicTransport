@@ -18,17 +18,13 @@ namespace ConsoleApp
             Autobus b = new Autobus { ID = 235, AmountOfFuel = 25, Capacity = 30 };
             Autobus c = new Autobus { ID = 235, AmountOfFuel = 3, Capacity = 2 };
             Tram t = new Tram { ID = 7, NumberOfWagon = 2 };
-            DispatchingOffice<Autobus> office = new DispatchingOffice<Autobus>;
+            DispatchingOffice<Autobus> office = new DispatchingOffice<Autobus>();
             office.AddVehicle(a);
             office.AddVehicle(b);
             office.AddVehicle(c);
-            office.AddVehicle(t);
+
+            office.NotifyObservers();
             
-            //office.SendMessageToVehicles();
-            a.SendInfoToDispatcher();
-            b.SendInfoToDispatcher();
-            c.SendInfoToDispatcher();
-            t.SendInfoToDispatcher();
             Console.ReadKey();
 
         }
